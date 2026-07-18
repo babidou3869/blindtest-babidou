@@ -2,7 +2,7 @@ const CLIENT_ID =
   "4bf36b39663c4261bfa910891bc80ea9";
 
 const REDIRECT_URI =
-  "http://127.0.0.1:5174/callback";
+  "https://babidou.vercel.app/callback";
 
 const SCOPES = [
   "user-read-private",
