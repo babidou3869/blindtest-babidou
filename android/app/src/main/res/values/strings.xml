@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Babidou</string>
+    <string name="title_activity_main">Babidou</string>
+    <string name="package_name">com.babidou.app</string>
+    <string name="custom_url_scheme">com.babidou.app</string>
+</resources>
