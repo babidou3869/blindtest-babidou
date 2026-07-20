@@ -1,15 +1,23 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { exchangeCodeForToken } from "../services/spotify";
 
 export default function Callback() {
   const navigate = useNavigate();
 
+  const alreadyExecuted = useRef(false);
+
   const [message, setMessage] = useState(
     "Connexion à Spotify en cours..."
   );
 
   useEffect(() => {
+    if (alreadyExecuted.current) {
+      return;
+    }
+
+    alreadyExecuted.current = true;
+
     async function finishSpotifyLogin() {
       const params = new URLSearchParams(window.location.search);
 
@@ -36,7 +44,9 @@ export default function Callback() {
           "/callback"
         );
 
-        navigate("/playlists", { replace: true });
+        navigate("/playlists", {
+          replace: true,
+        });
       } catch (error) {
         console.error(error);
         setMessage(error.message);
@@ -51,11 +61,15 @@ export default function Callback() {
       <section className="hero">
         <div className="logo">🎵</div>
 
-        <p className="eyebrow">SPOTIFY</p>
+        <p className="eyebrow">
+          SPOTIFY
+        </p>
 
         <h1>Connexion</h1>
 
-        <p className="subtitle">{message}</p>
+        <p className="subtitle">
+          {message}
+        </p>
 
         <button
           className="btn primary"
